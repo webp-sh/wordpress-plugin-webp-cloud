@@ -39,8 +39,15 @@ function image_proxy_register_settings() {
     register_setting('image_proxy_settings_group', 'proxy_url');
 }
 
+function image_proxy_plugin_settings_link($links) {
+    $settings_link = '<a href="options-general.php?page=image-proxy-settings">Settings</a>';
+    array_unshift($links, $settings_link);
+    return $links;
+}
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'image_proxy_plugin_settings_link');
+
 add_action('admin_menu', function() {
-    add_options_page('WebP Cloud Services Plugin Settings', 'WebP Cloud Services Plugin Settings', 'manage_options', 'image-proxy-settings', 'image_proxy_settings_page');
+    add_options_page('WebP Cloud Services Plugin Settings', 'WebP Cloud Services', 'manage_options', 'image-proxy-settings', 'image_proxy_settings_page');
 });
 
 add_action('admin_init', 'image_proxy_register_settings');
