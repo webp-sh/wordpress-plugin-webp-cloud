@@ -8,7 +8,7 @@ The Wordpress plugin for WebP Cloud(https://webp.se).
 
 ![](./images/create-proxy.png)
 
-After creation, you'll find your "Proxy URL". 
+After creation, you'll find your "Proxy Address". 
 
 ![](./images/proxy-info.png)
 
@@ -27,7 +27,7 @@ Now, upload to wordpress using "Upload" on Plugins page, and activate it
 
 ### Configure Plugin
 
-In the plugin's settings page, fillin the "Proxy URL" from above:
+In the plugin's settings page, fillin the "Proxy Address" from above:
 
 ![](./images/config-plugin.png)
 
