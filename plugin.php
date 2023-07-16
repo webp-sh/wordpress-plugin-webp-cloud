@@ -3,7 +3,7 @@
 Plugin Name: WebP Cloud Services Plugin
 Plugin URI: https://webp.se
 Description: Replaces all image URLs with WebP Cloud Services CDN URL
-Version: 1.0
+Version: 1.1
 Author: WebP Cloud Services
 Author URI: https://webp.se
 */
@@ -13,18 +13,21 @@ function replace_image_urls($content) {
     $proxy_url = get_option('proxy_url');
     
     // Regular expression pattern to match img tags
-    $pattern = '/<img(.*?)src=["\'](.*?)["\'](.*?)>/i';
+    $pattern = '/<img(.*?)\s(?:src|srcset)=["\'](.*?)["\'](.*?)>/i';
     
     // Replace the origin_url within img tags using a callback function
     $content = preg_replace_callback($pattern, function($matches) use ($origin_url, $proxy_url) {
         $img_tag = $matches[0];
         $img_src = $matches[2];
+        $img_srcset = $matches[3];
         
         // Replace the origin_url with proxy_url
         $new_img_src = str_replace($origin_url, $proxy_url, $img_src);
+        $new_img_srcset = str_replace($origin_url, $proxy_url, $img_srcset);
         
         // Replace the img src attribute in the img tag
-        $new_img_tag = str_replace($img_src, $new_img_src, $img_tag);
+        $new_img_tag = str_replace($img_srcset, $new_img_srcset, $img_tag);
+        $new_img_tag = str_replace($img_src, $new_img_src, $new_img_tag);
         
         return $new_img_tag;
     }, $content);
