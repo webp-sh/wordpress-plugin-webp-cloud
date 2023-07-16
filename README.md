@@ -15,6 +15,7 @@ After creation, you'll find your "Proxy Address".
 In the example here, it's `https://7bd7ce9.webp.ee`.
 
 ### Download plugin and upload to Wordpress
+> If you have SSH access to your server, you can clone this repository to `wp-content/plugins` which will make upgrade more easier.
 
 You can download the zipped plugin at: https://github.com/webp-sh/wordpress-plugin-webp-cloud/archive/refs/heads/master.zip
 
